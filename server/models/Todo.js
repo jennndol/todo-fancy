@@ -2,9 +2,12 @@ const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/todo-fancy');
 
 const todoSchema = mongoose.Schema({
-    task: String,
+    task: {
+        type: String,
+        required: [true, 'Task field cannot be empty']
+    },
     isCompleted: Boolean,
-    user:{
+    userId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
     }
