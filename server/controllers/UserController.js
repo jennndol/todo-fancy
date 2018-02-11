@@ -17,15 +17,18 @@ class UserController {
                     .then(user => {
                         if (user) {
                             let token = jwt.sign({
+                                _id: user._id,
                                 name: user.name,
                                 email: user.email
                             }, 'HAHAHA');
+                            console.log(token);
                             res.status(200).json({
                                 message: 'Successfully login',
                                 doc: user
                             });
                         } else {
                             let obj = {
+                                _id: user.id,
                                 name: doc.name,
                                 email: doc.email
                             }
