@@ -20,7 +20,7 @@ class UserController {
                                 _id: user._id,
                                 name: user.name,
                                 email: user.email
-                            }, 'HAHAHA');
+                            }, process.env.JWT_TOKEN_SECRET);
                             console.log(token);
                             res.status(200).json({
                                 message: 'Successfully login',
@@ -37,7 +37,7 @@ class UserController {
                                     let token = jwt.sign({
                                         name: user.name,
                                         email: user.email
-                                    }, 'HAHAHA');
+                                    }, process.env.JWT_TOKEN_SECRET);
                                     res.status(200).json({
                                         message: 'Successfully login',
                                         doc: user
