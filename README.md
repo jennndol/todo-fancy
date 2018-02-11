@@ -52,6 +52,7 @@ The server is built using express, here's the requirements for running this awes
 ## How To Run It
 
 Running the server
+
     cd server
     npm i
     npm run dev
