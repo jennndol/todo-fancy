@@ -98,6 +98,34 @@ class TodoController {
             });
     }
 
+    static setStatus(req, res) {
+        Todo.findById(req.params.id)
+            .then(doc => {
+                if (doc.isCompleted == false) {
+                    doc.isCompleted = true;
+                } else {
+                    doc.isCompleted = false;
+                }
+                doc.save()
+                    .then(doc => {
+                        res.status(200).json({
+                            message: 'Update success',
+                            doc: doc
+                        });
+                    })
+                    .catch(error => {
+                        res.status(500).json({
+                            message: error.message
+                        });
+                    });
+            })
+            .catch(error => {
+                res.status(500).json({
+                    message: error.message
+                });
+            });
+    }
+
 }
 
 module.exports = TodoController;

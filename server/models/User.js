@@ -2,13 +2,9 @@ const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/todo-fancy');
 
 const userSchema = mongoose.Schema({
-  firstName: {
+  name: {
     type: String,
-    required: [true, 'First name field cannot be empty']
-  },
-  lastName: {
-    type: String,
-    required: [true, 'Last name field cannot be empty']
+    required: [true, 'Name field cannot be empty']
   },
   email: {
     type: String,
