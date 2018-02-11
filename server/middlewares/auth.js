@@ -7,8 +7,6 @@ function Auth(req, res, next) {
                 message: 'Token wrong'
             });
         } else {
-            req.headers.name = payload.name;
-            req.headers.email = payload.email;
             next();
         }
     });
