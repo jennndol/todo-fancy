@@ -9,6 +9,7 @@
   "dependencies": {
     "bcrypt": "^1.0.3",
     "body-parser": "~1.18.2",
+    "brain": "0.7.0",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",
     "dotenv": "^5.0.0",
@@ -16,6 +17,7 @@
     "fb": "^2.0.0",
     "jade": "~1.11.0",
     "jsonwebtoken": "^8.1.1",
+    "limdu": "^0.9.3",
     "mongoose": "^5.0.4",
     "morgan": "~1.9.0",
     "serve-favicon": "~2.4.5"

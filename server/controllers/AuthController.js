@@ -2,6 +2,7 @@ const FB = require('fb');
 const jwt = require('jsonwebtoken');
 
 const User = require('../models/User');
+const comparePassword = require('../helpers/comparePassword');
 
 class UserController {
 
@@ -76,7 +77,6 @@ class UserController {
     }
 
     static loginFB(req, res) {
-        FB.setAccessToken(req.headers.token);
         FB.api('/me', {
                 fields: 'name, email'
             })
@@ -84,7 +84,7 @@ class UserController {
                 User.findOne({
                         email: doc.email
                     })
-                    .then(user => {
+                    .then(user => {                        
                         if (user) {
                             let token = jwt.sign({
                                 _id: user._id,
@@ -114,7 +114,7 @@ class UserController {
                                         email: user.email
                                     }, process.env.JWT_TOKEN_SECRET);
                                     res.status(200).json({
-                                        message: 'Successfully login',
+                                        message: 'Successfully created',
                                         token: token,
                                         user: {
                                             _id: user._id,
@@ -131,12 +131,16 @@ class UserController {
                         }
                     })
                     .catch(error => {
+                        console.log('HAHA');
+                        
                         res.status(500).json({
                             message: error.message
                         });
                     });
             })
             .catch(error => {
+                console.log('HGIHIH');
+                
                 res.status(500).json({
                     message: error.message
                 });

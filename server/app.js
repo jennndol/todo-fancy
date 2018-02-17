@@ -6,9 +6,12 @@ const cors = require('cors')
 const bodyParser = require('body-parser');
 
 const isLoggedin = require('./middlewares/auth');
+const isUser = require('./middlewares/user');
+
 const index = require('./routes/index');
 const todo = require('./routes/todo');
 const auth = require('./routes/auth');
+const user = require('./routes/user');
 
 const app = express();
 
@@ -18,8 +21,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use('/', index);
-app.use('/todos', isLoggedin, todo);
-app.use('/auth', isLoggedin);
+app.use('/todos', isLoggedin, isUser, todo);
+app.use('/auth', auth);
+app.use('/users', isLoggedin, isUser, user);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

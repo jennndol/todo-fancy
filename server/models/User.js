@@ -1,4 +1,6 @@
 const mongoose = require('mongoose');
+const generatePassword = require('../helpers/generatePassword');
+
 mongoose.connect('mongodb://localhost/todo-fancy');
 
 const userSchema = mongoose.Schema({
@@ -21,6 +23,7 @@ const userSchema = mongoose.Schema({
 });
 
 userSchema.pre('save', function (next) {
+  this.email = this.email.toLowerCase();
   generatePassword(this.password)
     .then(hash => {
       this.password = hash;

@@ -1,0 +1,44 @@
+[{
+    "input": "I am a super programmer full stack developer and business owner",
+    "output": [
+      "programmer",
+      "entrepreneur"
+    ]
+  },
+  {
+    "input": "entrepreneur",
+    "output": [
+      "entrepreneur"
+    ]
+  },
+  {
+    "input": "NodeJs programmer",
+    "output": [
+      "programmer"
+    ]
+  },
+  {
+    "input": "I am a super full stack developer",
+    "output": [
+      "programmer"
+    ]
+  },
+  {
+    "input": "I like dance",
+    "output": [
+      "dancer"
+    ]
+  },
+  {
+    "input": "dance",
+    "output": [
+      "dancer"
+    ]
+  },
+  {
+    "input": "I am an actor",
+    "output": [
+      "actor"
+    ]
+  }
+]
