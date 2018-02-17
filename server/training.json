@@ -60,6 +60,11 @@
     ]
   },
   {
+    "input": "no life",
+    "output": [
+      "programmer"
+    ]},
+  {
     "input": "I like writing",
     "output": [
       "author"

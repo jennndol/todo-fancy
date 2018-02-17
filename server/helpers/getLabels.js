@@ -3,6 +3,7 @@ const fs = require('fs');
 const data = fs.readFileSync('./training.json', 'utf-8');
 
 const getLabels = (str) => {
+  if (str == undefined) return ['todo fancy user'];
 
   var TextClassifier = limdu.classifiers.multilabel.BinaryRelevance.bind(0, {
     binaryClassifierType: limdu.classifiers.Winnow.bind(0, {

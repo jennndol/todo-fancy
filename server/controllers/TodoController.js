@@ -79,8 +79,6 @@ class TodoController {
                     message: error.message
                 });
             });
-
-
     }
 
     static remove(req, res) {
