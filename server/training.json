@@ -40,5 +40,35 @@
     "output": [
       "actor"
     ]
+  },
+  {
+    "input": "I love node js",
+    "output": [
+      "programmer"
+    ]
+  },
+  {
+    "input": "I like coding",
+    "output": [
+      "programmer"
+    ]
+  },
+  {
+    "input": "I have no life",
+    "output": [
+      "programmer"
+    ]
+  },
+  {
+    "input": "I like writing",
+    "output": [
+      "author"
+    ]
+  },
+  {
+    "input": "reading book",
+    "output": [
+      "geek"
+    ]
   }
 ]
