@@ -2,22 +2,24 @@ require('dotenv').config();
 
 const express = require('express');
 const logger = require('morgan');
+const cors = require('cors')
 const bodyParser = require('body-parser');
 
-const auth = require('./middlewares/auth');
+const isLoggedin = require('./middlewares/auth');
 const index = require('./routes/index');
 const todo = require('./routes/todo');
-const users = require('./routes/user');
+const auth = require('./routes/auth');
 
 const app = express();
 
+app.use(cors())
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use('/', index);
-app.use('/todos', auth, todo);
-app.use('/users', users);
+app.use('/todos', isLoggedin, todo);
+app.use('/auth', isLoggedin);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

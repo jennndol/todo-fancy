@@ -1,67 +1,63 @@
-const FB = require('fb');
-const jwt = require('jsonwebtoken');
-
 const User = require('../models/User');
-
+const decode = require('../helpers/decode');
 class UserController {
 
-    static checkUser(req, res) {
-        FB.setAccessToken(req.headers.token);
-        FB.api('/me', {
-                fields: 'name, email'
-            })
-            .then(doc => {
-                User.findOne({
-                        email: doc.email
-                    })
-                    .then(user => {
-                        if (user) {
-                            let token = jwt.sign({
-                                _id: user._id,
-                                name: user.name,
-                                email: user.email
-                            }, process.env.JWT_TOKEN_SECRET);
-                            console.log(token);
-                            res.status(200).json({
-                                message: 'Successfully login',
-                                doc: user
-                            });
-                        } else {
-                            let obj = {
-                                _id: user.id,
-                                name: doc.name,
-                                email: doc.email
-                            }
-                            User.create(obj)
-                                .then(user => {
-                                    let token = jwt.sign({
-                                        name: user.name,
-                                        email: user.email
-                                    }, process.env.JWT_TOKEN_SECRET);
-                                    res.status(200).json({
-                                        message: 'Successfully login',
-                                        doc: user
-                                    });
-                                })
-                                .catch(error => {
-                                    res.status(500).json({
-                                        message: error.message
-                                    });
-                                });
-                        }
-                    })
-                    .catch(error => {
-                        res.status(500).json({
-                            message: error.message
-                        });
-                    });
-            })
-            .catch(error => {
-                res.status(500).json({
-                    message: error.message
+  static getAll(req, res) {
+    User.find()
+      .then(docs => {
+        res.status(200).json({
+          message: 'Get users success',
+          docs: docs
+        });
+      })
+      .catch(error => {
+        res.status(500).json({
+          message: error.message
+        });
+      });
+  }
+
+  static detail(req, res) {
+    User.findById(req.params.id)
+      .then(doc => {
+        res.status(200).json({
+          message: 'Get user success',
+          doc: doc
+        })
+      })
+      .catch(error => {
+        res.status(500).json({
+          message: error.message
+        });
+      });
+  }
+
+  static update(req, res) {
+    decode(req.headers.token)
+      .then(payload => {
+        User.findById(payload._id)
+          .then(user => {
+            user.name = req.body.name || user.name;
+            user.bio = req.body.bio || user.bio;
+            user.save()
+              .then(doc => {
+                res.status(200).json({
+                  message: 'Update success',
                 });
-            });
-    }
+              })
+              .catch(error => {
+                res.status(500).json({
+                  message: error.message
+                });
+              });
+          })
+      })
+      .catch(error => {
+        res.status(500).json({
+          message: error.message
+        });
+      });
+  }
 
 }
 
