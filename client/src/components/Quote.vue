@@ -3,9 +3,9 @@
     <img width="50px;" id="loading-image" src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/09b24e31234507.564a1d23c07b4.gif"
       alt="Loading..." />
     <blockquote class="blockquote text-center">
-      <p class="mb-0"></p>
-      <footer class="blockquote-footer">
-        <cite title="Source Title"></cite>
+      <p class="mb-0">I learned that focus is key, not just in running a company, but in your personal life as well</p>
+      <footer class="blockquote-footer">Tim Cook
+        <cite title="Source Title">QoD</cite>
       </footer>
     </blockquote>
   </div>
