@@ -1,5 +1,6 @@
 <template>
   <div>
+    <loading></loading>
     <div id="fullscreen_bg" class="fullscreen_bg" />
     <div class="container">
       <div class="row center-block">
@@ -37,7 +38,12 @@
 </template>
 
 <script>
+  import Quote from "./Quote.vue";  
+
   export default {
+    components: {
+      'loading': Quote,
+    },
     data() {
       return {
         title: 'Login Page!',

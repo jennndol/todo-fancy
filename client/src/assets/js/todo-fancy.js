@@ -1,5 +1,7 @@
 let base_url = 'http://localhost:3000';
 
+localStorage.setItem('fblogin', false);
+
 function statusChangeCallback(response) {
   if (response.status === 'connected') {
     localStorage.setItem('accessToken', response.authResponse.accessToken);
@@ -41,6 +43,7 @@ window.fbAsyncInit = function () {
 function testAPI() {
   console.log('Welcome!  Fetching your information.... ');
   FB.api('/me', function (response) {
+    localStorage.setItem('fblogin', true);
     console.log('Successful login for: ' + response.name);
     let token = localStorage.getItem('accessToken');
     axios.get(base_url + '/auth/loginfb', {
@@ -58,8 +61,15 @@ function testAPI() {
   });
 }
 
-
 function logout() {
-  localStorage.clear();      
-  location.reload();
+  if (localStorage.getItem('fblogin')) {
+    FB.logout(function (response) {
+      localStorage.clear();
+      location.reload();
+    });
+  } else {
+    localStorage.clear();
+    location.reload();
+  }
 }
+
