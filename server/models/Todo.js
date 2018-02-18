@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/todo-fancy');
 
 const todoSchema = mongoose.Schema({
     task: {

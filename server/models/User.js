@@ -2,8 +2,6 @@ const mongoose = require('mongoose');
 const generatePassword = require('../helpers/generatePassword');
 const getLabels = require('../helpers/getLabels');
 
-mongoose.connect('mongodb://localhost/todo-fancy');
-
 const userSchema = mongoose.Schema({
   name: {
     type: String,
