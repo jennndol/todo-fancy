@@ -25,6 +25,10 @@
 </script>
 
 <style>
+  .mb-0 {
+    font-size: 1.5em;
+  }
+
   #loading {
     width: 100%;
     height: 100%;
@@ -46,3 +50,4 @@
   }
 
 </style>
+

@@ -2,10 +2,18 @@ let base_url = 'http://localhost:3000';
 
 localStorage.setItem('fblogin', false);
 
+let fbtoken = localStorage.getItem('accessToken');
+let jwtToken = localStorage.getItem('token');
+
 function statusChangeCallback(response) {
   if (response.status === 'connected') {
     localStorage.setItem('accessToken', response.authResponse.accessToken);
-    testAPI();
+    if (jwtToken && window.location.href == '/#/login') {
+      window.location.href = '/#';
+      location.reload();
+    } else {
+      testAPI();
+    }
   } else {
     console.log('Please log into this app.');
   }
@@ -45,31 +53,27 @@ function testAPI() {
   FB.api('/me', function (response) {
     localStorage.setItem('fblogin', true);
     console.log('Successful login for: ' + response.name);
-    let token = localStorage.getItem('accessToken');
+
     axios.get(base_url + '/auth/loginfb', {
         headers: {
-          token: token
+          token: fbtoken
         }
       })
       .then(payload => {
         localStorage.setItem('name', payload.data.user.name);
+        localStorage.setItem('userId', payload.data.user._id);
         localStorage.setItem('token', payload.data.token);
       })
       .catch(error => {
         console.log(error);
       });
   });
+
 }
 
 function logout() {
-  if (localStorage.getItem('fblogin')) {
-    FB.logout(function (response) {
-      localStorage.clear();
-      location.reload();
-    });
-  } else {
-    localStorage.clear();
-    location.reload();
-  }
+  FB.logout(function (response) {});
+  localStorage.clear();
+  location.reload();
 }
 

@@ -52,7 +52,7 @@
     },
     beforeMount: function () {
       $(document).ready(function () {
-        if (localStorage.getItem('token')) {
+        if (localStorage.getItem('token') && (window.location.href = '/#/login')) {
           window.location.href = '/#';
           location.reload();
         }
@@ -69,6 +69,7 @@
           .then(payload => {
             console.log(payload);
             this.message = null
+            localStorage.setItem('userId', payload.data.owner._id);            
             localStorage.setItem('name', payload.data.owner.name);
             localStorage.setItem('token', payload.data.token);
             window.location.href = '/#';

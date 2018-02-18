@@ -14,7 +14,13 @@
       <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav">
           <li class="active">
-            <a href="/">Home</a>
+            <router-link to="/">HOME</router-link>
+          </li>
+          <li>
+            <router-link to="/towork">TO-WORK</router-link>
+          </li>
+          <li>
+            <router-link to="/archived">ARCHIVED</router-link>
           </li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
@@ -25,11 +31,11 @@
             </a>
             <ul class="dropdown-menu">
               <li>
-                <a href="#">Profil</a>
+                <router-link to="/profile">Profile</router-link>
               </li>
               <li role="separator" class="divider"></li>
               <li>
-                <a href="#">Edit Profil</a>
+                <router-link to="/profile/edit">Edit Profile</router-link>
               </li>
               <li>
                 <a onclick="logout()">Logout</a>
@@ -56,7 +62,6 @@
 </script>
 
 <style scoped>
-
   .profile {
     width: 18px;
     border-radius: 50%;
