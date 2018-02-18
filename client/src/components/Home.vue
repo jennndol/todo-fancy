@@ -70,7 +70,7 @@
       }
     },
     created() {
-      axios.get('http://localhost:3000/todos', {
+      axios.get('http://35.198.255.146:3000/todos', {
           headers: {
             token: localStorage.getItem('token')
           }
@@ -93,7 +93,7 @@
     methods: {
       addTask() {
         let task = $('#task').val();
-        axios.post('http://localhost:3000/todos', {
+        axios.post('http://35.198.255.146:3000/todos', {
             task: task
           }, {
             headers: {
@@ -108,7 +108,7 @@
           })
       },
       isDone(id) {
-        axios.put(`http://localhost:3000/todos/${id}/isdone`, {}, {
+        axios.put(`http://35.198.255.146:3000/todos/${id}/isdone`, {}, {
             headers: {
               token: localStorage.getItem('token')
             }
@@ -122,7 +122,7 @@
           });
       },
       remove(id, index) {
-        axios.delete(`http://localhost:3000/todos/${id}`, {
+        axios.delete(`http://35.198.255.146:3000/todos/${id}`, {
             headers: {
               token: localStorage.getItem('token')
             }
@@ -142,7 +142,7 @@
       },
       processEdit() {
         let task = $('#edit-task').val();
-        axios.put(`http://localhost:3000/todos/${this.editedTask._id}`, {
+        axios.put(`http://35.198.255.146:3000/todos/${this.editedTask._id}`, {
             task: task
           }, {
             headers: {

@@ -62,7 +62,7 @@
       login() {
         let email = $('#email').val();
         let password = $('#password').val();
-        axios.post('http://localhost:3000/auth/login', {
+        axios.post('http://35.198.255.146:3000/auth/login', {
             email,
             password
           })

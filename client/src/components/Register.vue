@@ -71,7 +71,7 @@
         let password = $('#password').val();
         let confirmPassword = $('#confirm-password').val();
         if (password == confirmPassword) {
-          axios.post('http://localhost:3000/auth/register', {
+          axios.post('http://35.198.255.146:3000/auth/register', {
               name,
               email,
               password

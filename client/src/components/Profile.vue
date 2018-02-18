@@ -43,7 +43,7 @@
       }
     },
     created() {
-      axios.get(`http://localhost:3000/users/${localStorage.getItem('userId')}`, {
+      axios.get(`http://35.198.255.146:3000/users/${localStorage.getItem('userId')}`, {
           headers: {
             token: localStorage.getItem('token')
           }

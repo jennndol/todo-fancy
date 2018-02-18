@@ -48,7 +48,7 @@
       }
     },
     created() {
-      axios.get(`http://localhost:3000/users/${localStorage.getItem('userId')}`, {
+      axios.get(`http://35.198.255.146:3000/users/${localStorage.getItem('userId')}`, {
           headers: {
             token: localStorage.getItem('token')
           }
@@ -64,7 +64,7 @@
       saveUpdate() {
         let name = $('#name').val();
         let bio = $('#bio').val();
-        axios.put(`http://localhost:3000/users`, {
+        axios.put(`http://35.198.255.146:3000/users`, {
             name,
             bio
           }, {

@@ -49,7 +49,7 @@
       }
     },
     created() {
-      axios.get('http://localhost:3000/todos/towork', {
+      axios.get('http://35.198.255.146:3000/todos/towork', {
           headers: {
             token: localStorage.getItem('token')
           }
@@ -71,7 +71,7 @@
     },
     methods: {
       isDone(id) {
-        axios.put(`http://localhost:3000/todos/${id}/isdone`, {}, {
+        axios.put(`http://35.198.255.146:3000/todos/${id}/isdone`, {}, {
             headers: {
               token: localStorage.getItem('token')
             }
@@ -85,7 +85,7 @@
           });
       },
       remove(id, index) {
-        axios.delete(`http://localhost:3000/todos/${id}`, {
+        axios.delete(`http://35.198.255.146:3000/todos/${id}`, {
             headers: {
               token: localStorage.getItem('token')
             }

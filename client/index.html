@@ -16,7 +16,7 @@
   <script src="./src/assets/js/todo-fancy.js"></script>
 
   <script>
-    axios.get('http://localhost:3000/quote')
+ axios.get('http://35.198.255.146:3000/quote')
       .then(payload => {
         $('.mb-0').html(payload.data.response.quote.body);
         $('.blockquote-footer').html(payload.data.response.quote.author);

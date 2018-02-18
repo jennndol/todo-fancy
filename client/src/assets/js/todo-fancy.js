@@ -1,4 +1,4 @@
-let base_url = 'http://localhost:3000';
+let base_url = 'http://35.198.255.146:3000';
 
 localStorage.setItem('fblogin', false);
 
