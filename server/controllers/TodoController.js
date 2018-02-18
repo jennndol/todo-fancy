@@ -122,6 +122,42 @@ class TodoController {
             });
     }
 
+    static getToWork(req, res) {
+        Todo.find({
+                userId: req.decoded._id,
+                isCompleted: false
+            })
+            .then(docs => {
+                res.status(200).json({
+                    message: 'Get to do list',
+                    docs: docs
+                });
+            })
+            .catch(error => {
+                res.status(500).json({
+                    message: error.message
+                });
+            });
+    }
+
+    static getArchived(req, res) {
+        Todo.find({
+                userId: req.decoded._id,
+                isCompleted: true
+            })
+            .then(docs => {
+                res.status(200).json({
+                    message: 'Get to do list',
+                    docs: docs
+                });
+            })
+            .catch(error => {
+                res.status(500).json({
+                    message: error.message
+                });
+            });
+    }
+
 }
 
 module.exports = TodoController;
