@@ -8,7 +8,7 @@ let jwtToken = localStorage.getItem('token');
 function statusChangeCallback(response) {
   if (response.status === 'connected') {
     localStorage.setItem('accessToken', response.authResponse.accessToken);
-    if (jwtToken && window.location.href == '/#/login') {
+    if (jwtToken !== null && window.location.href == '/#/login') {
       window.location.href = '/#';
       location.reload();
     } else {
@@ -63,8 +63,6 @@ function testAPI() {
         localStorage.setItem('name', payload.data.user.name);
         localStorage.setItem('userId', payload.data.user._id);
         localStorage.setItem('token', payload.data.token);
-        window.location.href = "/#";
-        location.reload();
       })
       .catch(error => {
         console.log(error);

@@ -13,7 +13,7 @@
 
 <script>
   export default {
-    beforeMount() {
+    created() {
       $(document).ready(function () {
         setTimeout(() => {
           $('#loading').hide();

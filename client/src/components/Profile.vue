@@ -55,7 +55,7 @@
           console.log(error);
         });
     },
-    beforeMount() {
+    mounted() {
       if (localStorage.getItem('token') == null) {
         this.$router.push({name: 'login'})
       }

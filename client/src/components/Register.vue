@@ -56,7 +56,7 @@
         errorMessage: null
       }
     },
-    beforeMount: function () {
+    created: function () {
       if (localStorage.getItem('token')) {
         this.$router.push({name:'home'});
       }
