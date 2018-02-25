@@ -63,6 +63,8 @@ function testAPI() {
         localStorage.setItem('name', payload.data.user.name);
         localStorage.setItem('userId', payload.data.user._id);
         localStorage.setItem('token', payload.data.token);
+        window.location.href = "/#";
+        location.reload();
       })
       .catch(error => {
         console.log(error);
