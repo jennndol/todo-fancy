@@ -83,12 +83,9 @@
         })
     },
     mounted: function () {
-      $(document).ready(function () {
-        if (!localStorage.getItem('token')) {
-          window.location.href = ('/#/login');
-          location.reload();
-        }
-      })
+      if (localStorage.getItem('token')==null) {
+        this.$router.push({name: 'login'})
+      }
     },
     methods: {
       addTask() {
@@ -108,14 +105,23 @@
           })
       },
       isDone(id) {
+        let clone = [...this.todos]
+        let idx = clone.findIndex(val => {
+          return val._id == id;
+        });
+        if (clone[idx].isCompleted == true) {
+          clone[idx].isCompleted = false
+        } else {
+          clone[idx].isCompleted = true
+        }
+        
         axios.put(`http://35.198.255.146:3000/todos/${id}/isdone`, {}, {
             headers: {
               token: localStorage.getItem('token')
             }
           })
           .then(payload => {
-            console.log(payload);
-            location.reload();
+            this.todos = clone;            
           })
           .catch(error => {
             console.log(error);
@@ -129,7 +135,6 @@
           })
           .then(payload => {
             this.todos.splice(index, 1);
-            console.log(payload);
           })
           .catch(error => {
             console.log(error);
@@ -142,6 +147,11 @@
       },
       processEdit() {
         let task = $('#edit-task').val();
+        
+        let idx = this.todos.findIndex(val => {
+          return val._id == this.editedTask._id;
+        });
+        
         axios.put(`http://35.198.255.146:3000/todos/${this.editedTask._id}`, {
             task: task
           }, {
@@ -149,9 +159,9 @@
               token: localStorage.getItem('token')
             }
           })
-          .then(payload => {
-            console.log(payload);
-            location.reload();
+          .then(payload => {            
+            this.editedTask.task = task
+            this.todos[idx].task = task;
           })
           .catch(error => {
             console.log(error);

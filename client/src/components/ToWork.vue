@@ -62,23 +62,29 @@
         })
     },
     mounted: function () {
-      $(document).ready(function () {
         if (!localStorage.getItem('token')) {
-          window.location.href = ('/#/login');
-          location.reload();
+          this.$router.push({name:'login'})
         }
-      })
     },
     methods: {
       isDone(id) {
+        let clone = [...this.todos]
+        let idx = clone.findIndex(val => {
+          return val._id == id;
+        });
+        if (clone[idx].isCompleted == true) {
+          clone[idx].isCompleted = false
+        } else {
+          clone[idx].isCompleted = true
+        }
+        
         axios.put(`http://35.198.255.146:3000/todos/${id}/isdone`, {}, {
             headers: {
               token: localStorage.getItem('token')
             }
           })
           .then(payload => {
-            console.log(payload);
-            location.reload();
+            this.todos = clone;            
           })
           .catch(error => {
             console.log(error);

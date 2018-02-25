@@ -56,12 +56,9 @@
         });
     },
     beforeMount() {
-      $(document).ready(function () {
-        if (!localStorage.getItem('token')) {
-          window.location.href = '/#/login';
-          location.reload();
-        }
-      });
+      if (localStorage.getItem('token') == null) {
+        this.$router.push({name: 'login'})
+      }
     }
   }
 

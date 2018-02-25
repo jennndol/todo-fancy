@@ -57,12 +57,9 @@
       }
     },
     beforeMount: function () {
-      $(document).ready(function () {
-        if (localStorage.getItem('token')) {
-          window.location.href = ('/#');
-          location.reload();
-        }
-      });
+      if (localStorage.getItem('token')) {
+        this.$router.push({name:'home'});
+      }
     },
     methods: {
       register() {

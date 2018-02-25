@@ -13,8 +13,7 @@ const userSchema = mongoose.Schema({
     unique: true
   },
   password: {
-    type: String,
-    required: [true, 'Password field cannot be empty']
+    type: String
   },
   bio: String,
   labels: Array

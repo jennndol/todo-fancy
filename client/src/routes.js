@@ -8,24 +8,31 @@ import EditProfile from './components/EditProfile.vue';
 
 export default [{
   path: '/login',
-  component: Login
+  component: Login,
+  name: 'login'
 }, {
   path: '/',
-  component: Home
+  component: Home,
+  name: 'home'
 }, {
   path: '/towork',
-  component: ToWork
+  component: ToWork,
+  name: 'towork'
 }, {
   path: '/archived',
-  component: Archived
+  component: Archived,
+  name: 'archived'
 }, {
   path: '/register',
-  component: Register
+  component: Register,
+  name: 'register'
 }, {
   path: '/profile',
-  component: Profile
+  component: Profile,
+  name: 'profile'
 }, {
   path: '/profile/edit',
-  component: EditProfile
+  component: EditProfile,
+  name: 'editprofile'
 }]
 

@@ -50,13 +50,10 @@
         message: null
       }
     },
-    beforeMount: function () {
-      $(document).ready(function () {
-        if (localStorage.getItem('token') && (window.location.href = '/#/login')) {
-          window.location.href = '/#';
-          location.reload();
-        }
-      });
+    created: function () {
+      if (localStorage.getItem('token') && (window.location.href = '/#/login')) {
+        this.$router.push({name: 'home'});
+      }
     },
     methods: {
       login() {
@@ -72,8 +69,7 @@
             localStorage.setItem('userId', payload.data.owner._id);            
             localStorage.setItem('name', payload.data.owner.name);
             localStorage.setItem('token', payload.data.token);
-            window.location.href = '/#';
-            location.reload();
+            this.$router.push({name: 'home'})
           })
           .catch(error => {
             console.log(error);
