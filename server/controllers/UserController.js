@@ -33,8 +33,12 @@ class UserController {
   }
 
   static update(req, res) {
+    console.log('masuk');
+    
     User.findById(req.decoded._id)
       .then(user => {
+        console.log(user);
+        
         user.name = req.body.name || user.name;
         user.bio = req.body.bio || user.bio;
         user.save()
